@@ -2089,6 +2089,7 @@ class SpectralMaskEnhancement(Pretrained):
         output_filename : str
             If provided, writes enhanced data to this file.
         """
+        print("enhance file called")
         noisy = self.load_audio(filename)
         noisy = noisy.to(self.device)
 
