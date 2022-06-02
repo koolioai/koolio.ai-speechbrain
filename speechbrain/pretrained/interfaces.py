@@ -2070,6 +2070,7 @@ class SpectralMaskEnhancement(Pretrained):
         noisy_features = self.compute_features(noisy)
 
         # Perform masking-based enhancement, multiplying output with input.
+        print("lengths is: ", lengths, flush=True)
         if lengths is not None:
             mask = self.mods.enhance_model(noisy_features, lengths=lengths)
         else:
@@ -2077,7 +2078,7 @@ class SpectralMaskEnhancement(Pretrained):
         enhanced = torch.mul(mask, noisy_features)
 
         # Return resynthesized waveforms
-        print("returned enhance_batch")
+        print("returned enhance_batch", flush=True)
         return self.hparams.resynth(torch.expm1(enhanced), noisy)
 
     def enhance_file(self, filename, output_filename=None):
@@ -2104,7 +2105,7 @@ class SpectralMaskEnhancement(Pretrained):
         if output_filename is not None:
             torchaudio.save(output_filename, enhanced, channels_first=False)
 
-        print("returned enhance_file")
+        print("returned enhance_file", flush=True)
         return enhanced.squeeze(0)
 
     def forward(self, noisy, lengths=None):
