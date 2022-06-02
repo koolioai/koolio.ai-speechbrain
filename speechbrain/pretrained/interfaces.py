@@ -2098,7 +2098,8 @@ class SpectralMaskEnhancement(Pretrained):
         # Fake a batch:
         batch = noisy.unsqueeze(0)
         if lengths_arg_exists(self.enhance_batch):
-            enhanced = self.enhance_batch(batch, lengths=torch.tensor([1.0]))
+            enhanced = self.enhance_batch(batch)
+            # enhanced = self.enhance_batch(batch, lengths=torch.tensor([1.0]))
         else:
             enhanced = self.enhance_batch(batch)
 
