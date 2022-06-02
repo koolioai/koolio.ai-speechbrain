@@ -2105,6 +2105,7 @@ class SpectralMaskEnhancement(Pretrained):
         return enhanced.squeeze(0)
 
     def forward(self, noisy, lengths=None):
+        print("forward called", self, lengths, flush=True)
         """Runs enhancement on the noisy input"""
         return self.separate_batch(noisy, lengths)
 
