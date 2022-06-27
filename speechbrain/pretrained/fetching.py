@@ -112,6 +112,7 @@ def fetch(
         MSG = f"Fetch {filename}: Delegating to Huggingface hub, source {str(source)}."
         logger.info(MSG)
         try:
+            print("filename: ", filename, " repoId: ", source, "token:", use_auth_token)
             fetched_file = huggingface_hub.hf_hub_download(
                 repo_id=source, filename=filename, use_auth_token=use_auth_token
             )
