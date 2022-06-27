@@ -117,7 +117,7 @@ def fetch(
                 repo_id=source, filename=filename, use_auth_token=use_auth_token
             )
         except HTTPError as e:
-            print('error occured!')
+            print('error occured!', e)
             if "404 Client Error" in str(e):
                 raise ValueError("File not found on HF hub")
             else:
